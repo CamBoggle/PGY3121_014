@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Taller API</title>
+    <script>
+        $(document).ready(function(){
+            $("#enviar").focusin(function(){
+                $.get("https://jsonplaceholder.typicode.com/posts",function(data){
+                    $.each(data,function(i,item){
+                        $("#taller").append("<tr><td>"+item.userId+"</td><td>"+item.id+"</td><td>"+item.title+"</td><td>"+item.body+"</td></tr>");
+                    })
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h3>Taller API</h3>
+        <input type="button" id="enviar" value="Mostrar contenido" class="btn btn-success"><br><br>
+        <!--CREAR TABLA-->
+        <div class="table-responsive">                  
+            <table class="table table-dark table-striped" id="taller">
+                <thead>
+                    <tr>
+                        <th>usuarioID</th>
+                        <th>id</th>
+                        <th>titulo</th>
+                        <th>cuerpo</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
